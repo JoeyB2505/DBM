@@ -1,0 +1,237 @@
+{
+  "name": "unmute",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "onwBV",
+  "actions": [
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "MANAGE_ROLES",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Member Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":x: You don't have permissions to use this command",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "0",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":gear: Unmutes a user.\nUsage: `!unmute {@user/UserID} {Reason for unmute}`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "condition": "1",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "member": "0",
+      "varName": "",
+      "info": "0",
+      "storage": "1",
+      "varName2": "user_obj",
+      "name": "Store Member Info"
+    },
+    {
+      "count": "2",
+      "name": "Skip Actions"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "user",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"user\")}",
+      "storage": "1",
+      "varName": "user_obj",
+      "find2": "0",
+      "name": "Find Member"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "info": "22",
+      "storage": "1",
+      "varName2": "user_tag",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "info": "1",
+      "storage": "1",
+      "varName2": "user_ID",
+      "name": "Store Member Info"
+    },
+    {
+      "comment": "Store mod info",
+      "color": "#00ffff",
+      "name": "Comment"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "info": "1",
+      "storage": "1",
+      "varName2": "modID",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "1",
+      "varName": "",
+      "info": "22",
+      "storage": "1",
+      "varName2": "modTag",
+      "name": "Store Member Info"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "comment": "Check if user is muted",
+      "color": "#00ffff",
+      "name": "Comment"
+    },
+    {
+      "info": "1",
+      "find": "Muted",
+      "storage": "1",
+      "varName": "role",
+      "name": "Find Role"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "role": "3",
+      "varName2": "role",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check If Member has Role"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":gear: User isn't muted",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "Unmute the user",
+      "color": "#00ffff",
+      "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName2": "user_obj",
+      "role": "3",
+      "varName": "role",
+      "name": "Remove Member Role"
+    },
+    {
+      "title": "Unmute",
+      "author": "",
+      "color": "#FF4500",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "unmute",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "unmute",
+      "fieldName": "User",
+      "message": "${tempVars(\"user_tag\")} (${tempVars(\"user_ID\")})",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "unmute",
+      "fieldName": "Moderator",
+      "message": "${tempVars(\"modTag\")} (${tempVars(\"modID\")})",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "info": "1",
+      "find": "moderation-log",
+      "storage": "1",
+      "varName": "channel",
+      "name": "Find Channel"
+    },
+    {
+      "storage": "1",
+      "varName": "unmute",
+      "channel": "5",
+      "varName2": "channel",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    }
+  ]
+}

@@ -1,0 +1,656 @@
+{
+  "name": "mute",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "ICoyQ",
+  "actions": [
+    {
+      "member": "1",
+      "varName": "",
+      "permission": "MANAGE_ROLES",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Member Permissions"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":x: You don't have permissions to use this command.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "0",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":gear: Mutes a user for a time or Indefinitely.\nUsage: `!mute {@user/UserID} {Required reason} | {Time}`\nExample: `!mute @Owl Dumbass | 15d` would mute Owl for 15 days\n`d = days; h = hours; m = minutes`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "condition": "1",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check Parameters"
+    },
+    {
+      "member": "0",
+      "varName": "",
+      "info": "0",
+      "storage": "1",
+      "varName2": "user_obj",
+      "name": "Store Member Info"
+    },
+    {
+      "count": "8",
+      "name": "Skip Actions"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "ID_user",
+      "name": "Store Command Params"
+    },
+    {
+      "info": "0",
+      "find": "${tempVars(\"ID_user\")}",
+      "storage": "1",
+      "varName": "found_member",
+      "find2": "0",
+      "name": "Find Member"
+    },
+    {
+      "storage": "1",
+      "varName": "found_member",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":x: The user with the ID `${tempVars(\"ID_user\")}` doesn't seem to be in the server",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "member": "2",
+      "varName": "found_member",
+      "info": "0",
+      "storage": "1",
+      "varName2": "user_obj",
+      "name": "Store Member Info"
+    },
+    {
+      "count": "1",
+      "name": "Skip Actions"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "storage": "0",
+      "varName": "",
+      "name": "Delete Message"
+    },
+    {
+      "comment": "Store all server info",
+      "color": "#00ffff",
+      "name": "Comment"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "info": "0",
+      "storage": "1",
+      "varName2": "channel",
+      "name": "Store Channel Info"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "totalMutes",
+      "defaultVal": "0",
+      "storage": "1",
+      "varName2": "total_mutes",
+      "name": "Store Server Data"
+    },
+    {
+      "info": "1",
+      "find": "moderation-log",
+      "storage": "1",
+      "varName": "mod_channel",
+      "name": "Find Channel"
+    },
+    {
+      "info": "1",
+      "find": "Muted",
+      "storage": "1",
+      "varName": "mute_role",
+      "name": "Find Role"
+    },
+    {
+      "comment": "Check if member is already muted",
+      "color": "#b900b9",
+      "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "role": "3",
+      "varName2": "mute_role",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "2",
+      "name": "Check If Member has Role"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":gear: User is already muted",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "Store all muted info",
+      "color": "#80ffff",
+      "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "info": "22",
+      "storage": "1",
+      "varName2": "userTag",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "info": "1",
+      "storage": "1",
+      "varName2": "userID",
+      "name": "Store Member Info"
+    },
+    {
+      "comment": "Store all mod info",
+      "color": "#8080ff",
+      "name": "Comment"
+    },
+    {
+      "member": "1",
+      "varName": "user_obj",
+      "info": "22",
+      "storage": "1",
+      "varName2": "modTag",
+      "name": "Store Member Info"
+    },
+    {
+      "member": "1",
+      "varName": "user_obj",
+      "info": "1",
+      "storage": "1",
+      "varName2": "modID",
+      "name": "Store Member Info"
+    },
+    {
+      "info": "1",
+      "infoIndex": "2",
+      "storage": "1",
+      "varName": "reason",
+      "name": "Store Command Params"
+    },
+    {
+      "condition": "0",
+      "comparison": "2",
+      "value": "1",
+      "iftrue": "3",
+      "iftrueVal": "2",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": ":gear: You need to provide a reason.\nUsage: `!mute {@user/UserID} {Required Reason} | {time}`",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "Check if has time",
+      "color": "#00ffff",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "varName": "reason",
+      "comparison": "5",
+      "value": "\"|\"",
+      "iftrue": "2",
+      "iftrueVal": "60",
+      "iffalse": "0",
+      "iffalseVal": "5",
+      "name": "Check Variable"
+    },
+    {
+      "comment": "No time",
+      "color": "#ffff00",
+      "name": "Comment"
+    },
+    {
+      "comment": "Embed message",
+      "color": "#00ff40",
+      "name": "Comment"
+    },
+    {
+      "title": "Mute #${tempVars(\"total_mutes\")}",
+      "author": "",
+      "color": "#FF4500",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "mute_embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "User",
+      "message": "${tempVars(\"userTag\")} (${tempVars(\"userID\")})",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "Reason",
+      "message": "${tempVars(\"reason\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "Moderator",
+      "message": "${tempVars(\"modTag\")} (${tempVars(\"modID\")})",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "Muted until",
+      "message": "The end of time",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "Channel",
+      "message": "${tempVars(\"channel\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "comment": "Send the embed message to user and mod channel",
+      "color": "#00ff40",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "channel": "5",
+      "varName2": "mod_channel",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "channel": "5",
+      "varName2": "user_obj",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "${tempVars(\"modTag\")} has muted ${tempVars(\"userTag\")} for:\n```${tempVars(\"reason\")}```\nMute ends in: It doesn't.",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "comment": "Give Mute role",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName2": "user_obj",
+      "role": "3",
+      "varName": "mute_role",
+      "name": "Add Member Role"
+    },
+    {
+      "comment": "Add onto a total mutes counter",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "FirstNumber": "${tempVars(\"total_mutes\")}",
+      "info": "0",
+      "SecondNumber": "1",
+      "storage": "1",
+      "varName": "total_mutes_plus",
+      "name": "Basic Math Operation"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "totalMutes",
+      "changeType": "0",
+      "value": "tempVars(\"total_mutes_plus\")",
+      "name": "Control Server Data"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "comment": "Yes time",
+      "color": "#ffff00",
+      "name": "Comment"
+    },
+    {
+      "comment": "Get time and reason seperately ",
+      "color": "#ff00ff",
+      "name": "Comment"
+    },
+    {
+      "list": "7",
+      "varName": "reason",
+      "item": "|",
+      "storage": "1",
+      "varName2": "found_break",
+      "name": "Find Item in List"
+    },
+    {
+      "FirstNumber": "${tempVars(\"found_break\")}",
+      "info": "0",
+      "SecondNumber": "2",
+      "storage": "1",
+      "varName": "break",
+      "name": "Basic Math Operation"
+    },
+    {
+      "slice": "${tempVars(\"reason\")}",
+      "startingNumber": "${tempVars(\"break\")}",
+      "sliceLength": "99",
+      "storage": "1",
+      "varName": "time",
+      "name": "Slice"
+    },
+    {
+      "slice": "${tempVars(\"reason\")}",
+      "startingNumber": "0",
+      "sliceLength": "${tempVars(\"found_break\")}",
+      "storage": "1",
+      "varName": "reason_only",
+      "name": "Slice"
+    },
+    {
+      "comment": "Get Time in seconds",
+      "color": "#ff0000",
+      "name": "Comment"
+    },
+    {
+      "code": "var str = tempVars(\"time\");\n\n    var days = str.match(/[0-9]+(?=d)/);\n\n    var hours = str.match(/[0-9]+(?=h)/);\n\n    var mins = str.match(/[0-9]+(?=m)/);\n    \n\nvar total = (mins * 60) + (hours * 3600) + (days * 86400);\nthis.storeValue(total, 1, \"total\", cache);\n",
+      "behavior": "0",
+      "interpretation": "0",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script 2.0"
+    },
+    {
+      "comment": "^ \"total\" time in seconds ^",
+      "color": "#ff8080",
+      "name": "Comment"
+    },
+    {
+      "comment": "Embed message",
+      "color": "#00ff40",
+      "name": "Comment"
+    },
+    {
+      "title": "Mute #${tempVars(\"total_mutes\")}",
+      "author": "",
+      "color": "#FF4500",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "mute_embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "User",
+      "message": "${tempVars(\"userTag\")} (${tempVars(\"userID\")})",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "Reason",
+      "message": "${tempVars(\"reason_only\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "Moderator",
+      "message": "${tempVars(\"modTag\")} (${tempVars(\"modID\")})",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "Muted for",
+      "message": "${tempVars(\"time\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "fieldName": "Channel",
+      "message": "${tempVars(\"channel\")}",
+      "inline": "1",
+      "name": "Add Embed Field"
+    },
+    {
+      "comment": "Send the embed message to user and mod channel",
+      "color": "#00ff40",
+      "name": "Comment"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "channel": "5",
+      "varName2": "mod_channel",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "mute_embed",
+      "channel": "5",
+      "varName2": "user_obj",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "${tempVars(\"modTag\")} has muted ${tempVars(\"userTag\")} for:\n```${tempVars(\"reason_only\")}```\nMute ends in: ${tempVars(\"time\")}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "comment": "Give Mute role",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName2": "user_obj",
+      "role": "3",
+      "varName": "mute_role",
+      "name": "Add Member Role"
+    },
+    {
+      "comment": "Create Member Timer ",
+      "color": "#fd0241",
+      "name": "Comment"
+    },
+    {
+      "code": "//todays date in UNIX\nvar ts = Math.round((new Date()).getTime() / 1000);\nthis.storeValue(ts, 1, \"todayTimeStamp\", cache);\n\n//added onto time UNIX\nvar plus = tempVars(\"total\")\nvar cool = Math.round((new Date()).getTime() / 1000 + plus);\nthis.storeValue(cool, 1, \"unmutedOn\", cache);",
+      "behavior": "0",
+      "interpretation": "0",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script 2.0"
+    },
+    {
+      "input": "${tempVars(\"unmutedOn\")}",
+      "format": "",
+      "filename": "${tempVars(\"userID\")}",
+      "filepath": "./data/mutes",
+      "filetask": "1",
+      "name": "File Control"
+    },
+    {
+      "comment": "Add onto a total mutes counter",
+      "color": "#ff8000",
+      "name": "Comment"
+    },
+    {
+      "FirstNumber": "${tempVars(\"total_mutes\")}",
+      "info": "0",
+      "SecondNumber": "1",
+      "storage": "1",
+      "varName": "total_mutes_plus",
+      "name": "Basic Math Operation"
+    },
+    {
+      "server": "0",
+      "varName": "",
+      "dataName": "totalMutes",
+      "changeType": "0",
+      "value": "tempVars(\"total_mutes_plus\")",
+      "name": "Control Server Data"
+    }
+  ],
+  "comType": "0"
+}
