@@ -178,6 +178,14 @@
       "name": "Remove Member Role"
     },
     {
+      "member": "2",
+      "varName": "user_obj",
+      "dataName": "muted",
+      "changeType": "0",
+      "value": "0",
+      "name": "Control Member Data"
+    },
+    {
       "title": "Unmute",
       "author": "",
       "color": "#FF4500",
@@ -233,5 +241,6 @@
       "iffalseVal": "",
       "name": "Send Embed Message"
     }
-  ]
+  ],
+  "comType": "0"
 }
