@@ -1,0 +1,162 @@
+{
+  "name": "AutoUnmute",
+  "temp": "",
+  "event-type": "0",
+  "_id": "PZizT",
+  "actions": [
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "info": "1",
+      "storage": "1",
+      "varName2": "user_id",
+      "name": "Store Member Info"
+    },
+    {
+      "info": "0",
+      "find": "324229387295653889",
+      "storage": "1",
+      "varName": "server",
+      "name": "Find Server"
+    },
+    {
+      "server": "1",
+      "varName": "server",
+      "dataName": "mutes.${tempVars(\"user_id\")}.time",
+      "defaultVal": "0",
+      "storage": "1",
+      "varName2": "time",
+      "name": "Store Server Data"
+    },
+    {
+      "storage": "1",
+      "varName": "time",
+      "comparison": "0",
+      "value": "",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "12",
+      "name": "Check Variable"
+    },
+    {
+      "storage": "1",
+      "varName": "time",
+      "comparison": "2",
+      "value": "1",
+      "iftrue": "3",
+      "iftrueVal": "11",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Check Variable"
+    },
+    {
+      "behavior": "0",
+      "interpretation": "0",
+      "code": "//todays date in UNIX\nvar ts = Math.round((new Date()).getTime() / 1000);\nthis.storeValue(ts, 1, \"today\", cache);",
+      "storage": "0",
+      "varName": "",
+      "name": "Run Script"
+    },
+    {
+      "storage": "1",
+      "varName": "today",
+      "comparison": "4",
+      "value": "tempVars(\"time\")",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "3",
+      "iffalseVal": "9",
+      "name": "Check Variable"
+    },
+    {
+      "info": "1",
+      "find": "Muted",
+      "storage": "1",
+      "varName": "role",
+      "name": "Find Role"
+    },
+    {
+      "member": "2",
+      "varName2": "user_obj",
+      "role": "3",
+      "varName": "role",
+      "name": "Remove Member Role"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "info": "22",
+      "storage": "1",
+      "varName2": "tag",
+      "name": "Store Member Info"
+    },
+    {
+      "info": "1",
+      "find": "logs",
+      "storage": "1",
+      "varName": "chan",
+      "name": "Find Channel"
+    },
+    {
+      "title": "Auto Unmute",
+      "author": "",
+      "color": "#008000",
+      "url": "",
+      "authorIcon": "",
+      "authorUrl": "",
+      "imageUrl": "",
+      "thumbUrl": "",
+      "timestamp": "true",
+      "debug": "false",
+      "text": "",
+      "year": "",
+      "month": "",
+      "day": "",
+      "hour": "",
+      "minute": "",
+      "second": "",
+      "storage": "1",
+      "varName": "embed",
+      "name": "Create Embed Message"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "message": "User ${tempVars(\"tag\")} was automatically unmuted",
+      "name": "Set Embed Description"
+    },
+    {
+      "storage": "1",
+      "varName": "embed",
+      "channel": "5",
+      "varName2": "chan",
+      "storage3": "0",
+      "varName3": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Embed Message"
+    },
+    {
+      "server": "1",
+      "varName": "server",
+      "dataName": "mutes.${tempVars(\"user_id\")}.time",
+      "changeType": "0",
+      "value": "1",
+      "name": "Control Server Data"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "dataName": "muted",
+      "changeType": "0",
+      "value": "0",
+      "name": "Control Member Data"
+    },
+    {
+      "comment": "blank",
+      "color": "#000000",
+      "name": "Comment"
+    }
+  ]
+}
