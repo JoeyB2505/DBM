@@ -1,0 +1,31 @@
+{
+  "name": "AutoUnmute Check",
+  "temp": "20",
+  "event-type": "3",
+  "_id": "HagGx",
+  "actions": [
+    {
+      "info": "1",
+      "find": "Muted",
+      "storage": "1",
+      "varName": "role",
+      "name": "Find Role"
+    },
+    {
+      "role": "3",
+      "varName": "role",
+      "info": "9",
+      "storage": "1",
+      "varName2": "members",
+      "name": "Store Role Info"
+    },
+    {
+      "source": "PZizT",
+      "list": "7",
+      "varName": "members",
+      "tempVarName": "user_obj",
+      "type": "true",
+      "name": "Loop Through List"
+    }
+  ]
+}
