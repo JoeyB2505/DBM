@@ -279,7 +279,7 @@
       "comparison": "5",
       "value": "\"|\"",
       "iftrue": "2",
-      "iftrueVal": "60",
+      "iftrueVal": "61",
       "iffalse": "0",
       "iffalseVal": "5",
       "name": "Check Variable"
@@ -397,6 +397,14 @@
       "comment": "Give Mute role",
       "color": "#ff8000",
       "name": "Comment"
+    },
+    {
+      "member": "2",
+      "varName": "user_obj",
+      "dataName": "muted",
+      "changeType": "0",
+      "value": "1",
+      "name": "Control Member Data"
     },
     {
       "member": "2",
@@ -602,6 +610,14 @@
     },
     {
       "member": "2",
+      "varName": "user_obj",
+      "dataName": "muted",
+      "changeType": "0",
+      "value": "1",
+      "name": "Control Member Data"
+    },
+    {
+      "member": "2",
       "varName2": "user_obj",
       "role": "3",
       "varName": "mute_role",
@@ -623,12 +639,12 @@
       "name": "Run Script 2.0"
     },
     {
-      "input": "${tempVars(\"unmutedOn\")}",
-      "format": "",
-      "filename": "${tempVars(\"userID\")}",
-      "filepath": "./data/mutes",
-      "filetask": "1",
-      "name": "File Control"
+      "server": "0",
+      "varName": "",
+      "dataName": "mutes.${tempVars(\"userID\")}.time",
+      "changeType": "0",
+      "value": "tempVars(\"unmutedOn\")",
+      "name": "Control Server Data"
     },
     {
       "comment": "Add onto a total mutes counter",
